@@ -20,6 +20,7 @@
 
 const cardFactory = (article) => {
     const card = document.createElement('div');
+    card.setAttribute('data-topic', article.category)
     card.classList.add('card');
 
     const headline = document.createElement('div');
@@ -50,7 +51,8 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         const articles = response.data.articles;
         for (const category in articles) {
             articles[category].forEach( article => {
-                cardsContainer.append(cardFactory(article));
+                article.category = category;
+                cardsContainer.append(cardFactory(article, category));
             });
         }
     })

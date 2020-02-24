@@ -8,10 +8,33 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
+let filteredTopic = '';
+
 const tabFactory = (topic) => {
     const tab = document.createElement('div');
     tab.classList.add('tab');
     tab.textContent = topic;
+
+    tab.addEventListener('click', event => {
+        const cards = document.querySelectorAll('.card');
+        const cleanTopic = topic.replace('.js', '');
+
+        if (filteredTopic != cleanTopic) {
+            filteredTopic = cleanTopic;
+            cards.forEach(card => {
+                if (card.getAttribute('data-topic') == filteredTopic) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        } else {
+            filteredTopic = '';
+            cards.forEach(card => {
+                card.style.display = 'flex';
+            });
+        }
+    });
 
     return tab;
 }
