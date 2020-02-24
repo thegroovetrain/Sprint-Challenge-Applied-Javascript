@@ -302,14 +302,4 @@ body {
 .carousel img {
   width: 100%;
   display: none;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
 }

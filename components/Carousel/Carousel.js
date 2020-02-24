@@ -29,6 +29,10 @@ const carouselFactory = (images) => {
   const carousel = document.createElement('div');
   carousel.classList.add('carousel');
 
+  const style = document.createElement('style');
+  style.textContent = ".carousel img { animation: fade 1.5s; } @keyframes fade { 0% { opacity: 0.4; } 100% { opacity: 1; }}"
+  carousel.append(style);
+
   const leftButton = document.createElement('div');
   leftButton.classList.add('left-button');
   leftButton.textContent = '<';
@@ -40,7 +44,6 @@ const carouselFactory = (images) => {
   images.forEach(imgref => {
     const image = document.createElement('img');
     image.setAttribute('src', imgref);
-    image.style.animation = 'slide 1.5s forwards;'
     carousel.append(image);
   });
 
