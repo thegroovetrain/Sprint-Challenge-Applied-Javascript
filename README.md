@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+The Document Object Model is an API for HTML and XML documents. It defines the structure of the documents and the way a document is accessed and manipulated.
+
 2. What is an event?
+
+"Things" that happen to HTML elements.
 
 3. What is an event listener?
 
+"Listen" for certain events to happen, and then execute code.
+
 4. Why would we convert a NodeList into an Array?
 
+NodeLists do not come with helpful array methods. Arrays do.
+
 5. What is a component?
+
+A design paradigm for reusable code.
 
 ### Git Set up
 
