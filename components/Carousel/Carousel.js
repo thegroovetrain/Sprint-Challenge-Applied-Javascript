@@ -17,3 +17,63 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+data = [
+  './assets/carousel/mountains.jpeg',
+  './assets/carousel/computer.jpeg',
+  './assets/carousel/trees.jpeg',
+  './assets/carousel/turntable.jpeg',
+]
+
+const carouselFactory = (images) => {
+  const carousel = document.createElement('div');
+  carousel.classList.add('carousel');
+
+  const leftButton = document.createElement('div');
+  leftButton.classList.add('left-button');
+  leftButton.textContent = '<';
+  leftButton.addEventListener('click', event => {
+    navSlides(-1);
+  });
+  carousel.append(leftButton);
+
+  images.forEach(imgref => {
+    const image = document.createElement('img');
+    image.setAttribute('src', imgref);
+    image.style.animation = 'slide 1.5s forwards;'
+    carousel.append(image);
+  });
+
+  const rightButton = document.createElement('div');
+  rightButton.classList.add('right-button');
+  rightButton.textContent = '>';
+  rightButton.addEventListener('click', event => {
+    navSlides(1);
+  });
+  carousel.append(rightButton);
+
+  return carousel;
+}
+
+let slideIndex = 1;
+
+const navSlides = (n) => {
+  showSlides(slideIndex += n);
+}
+
+const showSlides = (n) => {
+  let i;
+  const slides = document.querySelectorAll('.carousel img');
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 0) { slideIndex = slides.length }
+
+  for ( i = 0; i < slides.length; i++ ) {
+    slides[i].style.display = 'none';
+  }
+  
+  slides[slideIndex - 1].style.display = "block";
+}
+
+const carouselContainer = document.querySelector('.carousel-container');
+carouselContainer.append(carouselFactory(data));
+carouselContainer.querySelector('img').style.display = "block";
